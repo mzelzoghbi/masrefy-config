@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 16,
+  "banksVersion": 4,
+  "banks": [
+    {
+      "key": "CIB",
+      "nameEn": "CIB",
+      "nameAr": "سي آي بي",
+      "colorHex": "A8443E",
+      "senderHint": "CIB",
+      "sortOrder": 0
+    },
+    {
+      "key": "InstaPay",
+      "nameEn": "InstaPay",
+      "nameAr": "إنستا باي",
+      "colorHex": "0F4C5C",
+      "senderHint": "InstaPay",
+      "sortOrder": 1
+    },
+    {
+      "key": "Mashreq",
+      "nameEn": "Mashreq",
+      "nameAr": "المشرق",
+      "colorHex": "C8854A",
+      "senderHint": "Mashreq",
+      "sortOrder": 2
+    },
+    {
+      "key": "CreditAgricole",
+      "nameEn": "Credit Agricole",
+      "nameAr": "كريدي أجريكول",
+      "colorHex": "3D6B4F",
+      "senderHint": "banki",
+      "sortOrder": 3
+    }
+  ],
+  "rules": [
+    {
+      "key": "cib_credit_card",
+      "name": "Credit card · English",
+      "pattern": "(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s+at\\s+([A-Z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s+on\\b|\\s*$|,)",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 2,
+      "priority": 10,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "mashreq_card_charge",
+      "name": "Card charge · English",
+      "pattern": "charged\\s+at\\s+([A-Z0-9 &'\\-_/\\.*]{2,40}?)\\s+for\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)",
+      "type": "expense",
+      "amountGroup": 2,
+      "merchantGroup": 1,
+      "priority": 15,
+      "bankKey": "Mashreq"
+    },
+    {
+      "key": "account_debited",
+      "name": "Account debit (generic)",
+      "pattern": "(?:account|acct)[^\\n]*?debited\\s+with\\s+(?:amount\\s+)?(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)(?:\\s*DR)?",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "priority": 20,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "account_credited",
+      "name": "Account credit (generic)",
+      "pattern": "(?:account|acct)[^\\n]*?credited\\s+with\\s+(?:amount\\s+)?(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)(?:\\s*CR)?",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "priority": 30,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "ar_card_debit",
+      "name": "خصم بطاقة (عربي)",
+      "pattern": "تم\\s+خصم\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)[^\\n]*?عند\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s+في\\s|\\s*$|\\.|،)",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 2,
+      "priority": 35,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "ar_cae_card_debit",
+      "name": "خصم بطاقة (كريدي أجريكول)",
+      "pattern": "خصم\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*جم\\s+من\\s+بطاقة[^\\n]*?في\\s+\\d{1,2}/\\d{1,2}\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)\\s+الرصيد",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 2,
+      "priority": 34,
+      "bankKey": "CreditAgricole"
+    },
+    {
+      "key": "ar_outflow",
+      "name": "تحويل صادر (عربي)",
+      "pattern": "بمبلغ\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:جم|ج\\.م)\\s+من\\s+حسابك",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "priority": 40,
+      "bankKey": "InstaPay"
+    },
+    {
+      "key": "ar_inflow",
+      "name": "تحويل وارد (عربي)",
+      "pattern": "بمبلغ\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:جم|ج\\.م)\\s+إلى\\s+حسابك(?:.*?من\\s+([؀-ۿA-Z0-9 \\-_/\\.]{2,60}?))?(?:\\s+برقم|\\s*$|\\.|،)",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 2,
+      "priority": 50,
+      "bankKey": "InstaPay"
+    },
+    {
+      "key": "ipn_transfer_deducted",
+      "name": "InstaPay transfer out · English",
+      "pattern": "IPN\\s+Transfer\\b[^\\n]*?\\bwith\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s+deducted",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "priority": 44,
+      "bankKey": "InstaPay"
+    },
+    {
+      "key": "ipn_transfer_credited",
+      "name": "InstaPay transfer in · English",
+      "pattern": "IPN\\s+Transfer\\s+From\\b[^\\n]*?\\bwith\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s+was\\s+credited",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "priority": 45,
+      "bankKey": "InstaPay"
+    },
+    {
+      "key": "ar_account_deposit",
+      "name": "إيداع (عربي)",
+      "pattern": "تم\\s+إيداع\\s+(?:مبلغ\\s+)?([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD|جم|ج\\.م)",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "priority": 33,
+      "bankKey": "CIB"
+    }
+  ]
+}

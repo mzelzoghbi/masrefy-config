@@ -1,0 +1,20 @@
+name: Purge jsDelivr cache
+
+# Whenever the manifest changes on main, ask jsDelivr to drop its cached copy
+# so the @main CDN URL serves the new rules within seconds instead of ~12h.
+on:
+  push:
+    branches: [main]
+    paths:
+      - sms-rules.json
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge sms-rules.json
+        run: |
+          echo "Purging jsDelivr cache for sms-rules.json…"
+          curl -sS --fail-with-body \
+            "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/sms-rules.json"
+          echo
