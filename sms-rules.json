@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 17,
+  "rulesVersion": 18,
   "banksVersion": 4,
   "banks": [
     {
@@ -115,7 +115,8 @@
       "amountGroup": 1,
       "merchantGroup": 0,
       "priority": 50,
-      "bankKey": "InstaPay"
+      "bankKey": "InstaPay",
+      "nameGroup": 2
     },
     {
       "key": "ipn_transfer_deducted",
