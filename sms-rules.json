@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 16,
+  "rulesVersion": 17,
   "banksVersion": 4,
   "banks": [
     {
@@ -113,7 +113,7 @@
       "pattern": "بمبلغ\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:جم|ج\\.م)\\s+إلى\\s+حسابك(?:.*?من\\s+([؀-ۿA-Z0-9 \\-_/\\.]{2,60}?))?(?:\\s+برقم|\\s*$|\\.|،)",
       "type": "income",
       "amountGroup": 1,
-      "merchantGroup": 2,
+      "merchantGroup": 0,
       "priority": 50,
       "bankKey": "InstaPay"
     },
@@ -145,6 +145,16 @@
       "amountGroup": 1,
       "merchantGroup": 0,
       "priority": 33,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "ar_card_refund",
+      "name": "استرداد بطاقة (عربي)",
+      "pattern": "تم\\s+رد\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)[^\\n]*?من\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s*>|\\s*$|\\.|،|\\s+يرجى)",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 2,
+      "priority": 32,
       "bankKey": "CIB"
     }
   ]
