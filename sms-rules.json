@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 18,
+  "rulesVersion": 19,
   "banksVersion": 4,
   "banks": [
     {
@@ -153,6 +153,16 @@
       "name": "استرداد بطاقة (عربي)",
       "pattern": "تم\\s+رد\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)[^\\n]*?من\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s*>|\\s*$|\\.|،|\\s+يرجى)",
       "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 2,
+      "priority": 32,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "ar_cib_purchase",
+      "name": "عملية شراء (عربي)",
+      "pattern": "عملية\\s+شراء[^\\n]*?بمبلغ\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:جم|ج\\.م)\\s+من\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s+برقم|\\s+بتاريخ|\\s+الرصيد|\\s*$|\\.|،)",
+      "type": "expense",
       "amountGroup": 1,
       "merchantGroup": 2,
       "priority": 32,
