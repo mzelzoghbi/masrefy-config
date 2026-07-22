@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 19,
+  "rulesVersion": 20,
   "banksVersion": 4,
   "banks": [
     {
@@ -167,6 +167,17 @@
       "merchantGroup": 2,
       "priority": 32,
       "bankKey": "CIB"
+    },
+    {
+      "key": "cae_ipn_credited",
+      "name": "InstaPay incoming · English (banki)",
+      "pattern": "credited\\s+by\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\b[^\\n]*?\\bIPN\\s+transfer\\s+from\\s+([A-Za-z0-9][A-Za-z0-9 *.'\\-]{1,60}?)(?:\\s+ref\\b|[.,]|\\s*$)",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "nameGroup": 2,
+      "priority": 28,
+      "bankKey": "CreditAgricole"
     }
   ]
 }
