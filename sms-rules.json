@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 20,
+  "rulesVersion": 21,
   "banksVersion": 4,
   "banks": [
     {
@@ -178,6 +178,28 @@
       "nameGroup": 2,
       "priority": 28,
       "bankKey": "CreditAgricole"
+    },
+    {
+      "key": "ar_cib_cash_withdrawal",
+      "name": "سحب نقدي · CIB",
+      "pattern": "تم\\s+سحب\\s+مبلغ\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)(?:[^\\n]*?\\bمن\\s+([A-Za-z][A-Za-z0-9 &'._/\\-]{1,40}?)\\s+(?:I\\s+)?في\\b)?",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "nameGroup": 2,
+      "priority": 31,
+      "bankKey": "CIB"
+    },
+    {
+      "key": "ar_cib_txn_added",
+      "name": "استرداد معاملة · CIB",
+      "pattern": "تم\\s+اضافة\\s+المعاملة\\s+(?:من\\s+([A-Za-z][A-Za-z0-9 &'._/\\-]{1,40}?)\\s+(?:I\\s+)?)?بقيمة\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s+إلى\\s+بطاقتك",
+      "type": "income",
+      "amountGroup": 2,
+      "merchantGroup": 0,
+      "nameGroup": 1,
+      "priority": 31,
+      "bankKey": "CIB"
     }
   ]
 }
