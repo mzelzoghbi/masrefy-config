@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 21,
-  "banksVersion": 4,
+  "rulesVersion": 22,
+  "banksVersion": 5,
   "banks": [
     {
       "key": "CIB",
@@ -34,6 +34,14 @@
       "colorHex": "3D6B4F",
       "senderHint": "banki",
       "sortOrder": 3
+    },
+    {
+      "key": "VodafoneCash",
+      "nameEn": "Vodafone Cash",
+      "nameAr": "فودافون كاش",
+      "colorHex": "E60000",
+      "senderHint": "Vodafone",
+      "sortOrder": 4
     }
   ],
   "rules": [
@@ -200,6 +208,28 @@
       "nameGroup": 1,
       "priority": 31,
       "bankKey": "CIB"
+    },
+    {
+      "key": "vfcash_received_ar",
+      "name": "استلام أموال · محفظة",
+      "pattern": "تم\\s+[إا]ستلام\\s+مبلغ\\s+([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:ج\\.?م|جنيه|جم|EGP|LE)(?:[^\\n]*?باسم\\s*([A-Za-z][A-Za-z0-9 .'\\-]{1,40}?)\\s+بنجاح)?",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "nameGroup": 2,
+      "priority": 29,
+      "bankKey": "VodafoneCash"
+    },
+    {
+      "key": "vfcash_transfer_out_en",
+      "name": "Money transfer out · wallet",
+      "pattern": "([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:L\\.?E\\.?|EGP)\\s+(?:were|was)\\s+successfully\\s+transferred\\s+to\\s+(\\d{6,15})",
+      "type": "expense",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "nameGroup": 2,
+      "priority": 29,
+      "bankKey": "VodafoneCash"
     }
   ]
 }
