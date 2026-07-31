@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 22,
+  "rulesVersion": 23,
   "banksVersion": 5,
   "banks": [
     {
@@ -230,6 +230,17 @@
       "nameGroup": 2,
       "priority": 29,
       "bankKey": "VodafoneCash"
+    },
+    {
+      "key": "ar_account_transfer_in",
+      "name": "تحويل وارد على الحساب (عربي)",
+      "pattern": "تم\\s+تحويل\\s+مبلغ\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)?\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)\\s*(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD|جم|ج\\.م)?(?![^\\n]*?من\\s+حساب)[^\\n]*?(?:على|إلى|الى)\\s+حساب(?:كم|ك)(?:[^\\n]*?\\bمن\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s+بتاريخ|\\s+برقم|\\s+الرصيد|\\s*$|\\.|،))?",
+      "type": "income",
+      "amountGroup": 1,
+      "merchantGroup": 0,
+      "nameGroup": 2,
+      "priority": 27,
+      "bankKey": "CIB"
     }
   ]
 }
