@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 23,
+  "rulesVersion": 24,
   "banksVersion": 5,
   "banks": [
     {
@@ -88,7 +88,7 @@
     {
       "key": "ar_card_debit",
       "name": "خصم بطاقة (عربي)",
-      "pattern": "تم\\s+خصم\\s+(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)[^\\n]*?عند\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s+في\\s|\\s*$|\\.|،)",
+      "pattern": "تم\\s+خصم\\s+(?:مبلغ\\s+)?(?:EGP|LE|USD|EUR|GBP|SAR|AED|JPY|CHF|CAD|AUD)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)[^\\n]*?عند\\s+([؀-ۿA-Za-z0-9 &'\\-_/\\.*]{2,40}?)(?:\\s+في\\s|\\s*$|\\.|،)",
       "type": "expense",
       "amountGroup": 1,
       "merchantGroup": 2,
