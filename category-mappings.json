@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 2,
+  "rules": [
+    { "key": "chillout",    "keyword": "chillout",   "match": "word",     "categorySlug": "transport", "priority": 100 },
+    { "key": "mobil",       "keyword": "mobil",      "match": "word",     "categorySlug": "transport", "priority": 100 },
+    { "key": "wataniya",    "keyword": "wataniya",   "match": "word",     "categorySlug": "transport", "priority": 100 },
+    { "key": "taqa",        "keyword": "taqa",       "match": "word",     "categorySlug": "transport", "priority": 100 },
+    { "key": "petrol",      "keyword": "petrol",     "match": "contains", "categorySlug": "transport", "priority": 50 },
+    { "key": "benzine.ar",  "keyword": "بنزين",       "match": "contains", "categorySlug": "transport", "priority": 50 },
+
+    { "key": "market",      "keyword": "market",     "match": "contains", "categorySlug": "groceries", "priority": 50 },
+    { "key": "market.ar",   "keyword": "ماركت",       "match": "contains", "categorySlug": "groceries", "priority": 50 },
+    { "key": "grocery",     "keyword": "grocery",    "match": "contains", "categorySlug": "groceries", "priority": 50 },
+    { "key": "bakala.ar",   "keyword": "بقالة",       "match": "contains", "categorySlug": "groceries", "priority": 50 },
+
+    { "key": "restaurant",  "keyword": "restaurant", "match": "contains", "categorySlug": "food",      "priority": 50 },
+    { "key": "cafe",        "keyword": "cafe",       "match": "contains", "categorySlug": "food",      "priority": 50 },
+    { "key": "coffee",      "keyword": "coffee",     "match": "contains", "categorySlug": "food",      "priority": 50 },
+    { "key": "mat3am.ar",   "keyword": "مطعم",        "match": "contains", "categorySlug": "food",      "priority": 50 },
+    { "key": "cafe.ar",     "keyword": "كافيه",       "match": "contains", "categorySlug": "food",      "priority": 50 },
+
+    { "key": "pharmacy",    "keyword": "pharmacy",   "match": "contains", "categorySlug": "health",    "priority": 50 },
+    { "key": "saydalia.ar", "keyword": "صيدلية",      "match": "contains", "categorySlug": "health",    "priority": 50 },
+    { "key": "hospital",    "keyword": "hospital",   "match": "contains", "categorySlug": "health",    "priority": 50 },
+    { "key": "clinic",      "keyword": "clinic",     "match": "contains", "categorySlug": "health",    "priority": 50 },
+    { "key": "lab",         "keyword": "lab",        "match": "word",     "categorySlug": "health",    "priority": 40 },
+
+    { "key": "electric",    "keyword": "electric",   "match": "contains", "categorySlug": "bills",     "priority": 50 },
+    { "key": "kahraba.ar",  "keyword": "كهرباء",      "match": "contains", "categorySlug": "bills",     "priority": 50 }
+  ]
+}

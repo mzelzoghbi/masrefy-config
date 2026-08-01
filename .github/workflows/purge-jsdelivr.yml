@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - sms-rules.json
+      - category-mappings.json
 
 jobs:
   purge:
@@ -17,4 +18,10 @@ jobs:
           echo "Purging jsDelivr cache for sms-rules.json…"
           curl -sS --fail-with-body \
             "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/sms-rules.json"
+          echo
+      - name: Purge category-mappings.json
+        run: |
+          echo "Purging jsDelivr cache for category-mappings.json…"
+          curl -sS --fail-with-body \
+            "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/category-mappings.json"
           echo
